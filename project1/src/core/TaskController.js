@@ -7,15 +7,27 @@ export class TaskController {
     this.store.dispatch({ type: 'ADD_TASK', payload: { title } });
   }
 
-  deleteTask(id) {
-    this.store.dispatch({ type: 'DELETE_TASK', payload: { id } });
+  deleteTask(id, title) {
+    this.store.dispatch({ type: 'DELETE_TASK', payload: { id, title } });
   }
 
-  toggleTask(id) {
-    this.store.dispatch({ type: 'TOGGLE_TASK', payload: { id } });
+  toggleTask(id, title, newStatus) {
+    this.store.dispatch({ type: 'TOGGLE_TASK', payload: { id, title, newStatus } });
   }
 
-  editTask(id, title) {
-    this.store.dispatch({ type: 'EDIT_TASK', payload: { id, title } });
+  editTask(id, oldTitle, newTitle) {
+    this.store.dispatch({ type: 'EDIT_TASK', payload: { id, oldTitle, newTitle } });
+  }
+
+  restoreTask(id, title) {
+    this.store.dispatch({ type: 'RESTORE_TASK', payload: { id, title } });
+  }
+
+  clearLog() {
+    this.store.dispatch({ type: 'CLEAR_LOG' });
+  }
+
+  clearCompleted() {
+    this.store.dispatch({ type: 'CLEAR_COMPLETED' });
   }
 }
